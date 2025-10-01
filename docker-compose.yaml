@@ -1,0 +1,15 @@
+# docker-compose.yml
+services:
+  smblds:
+    image: smblds/smblds:latest
+    container_name: smblds
+    ports:
+      - "389:389"
+      - "636:636"
+    environment:
+      REALM: "EXAMPLE.LOCAL"
+      DOMAIN: "EXAMPLE"
+      ADMINPASS: "Passw0rd!"
+      INSECURE_LDAP: "true"              # only if you want ldap:// on 389
+      INSECURE_PASSWORDSETTINGS: "true"  # optional
+    restart: unless-stopped
